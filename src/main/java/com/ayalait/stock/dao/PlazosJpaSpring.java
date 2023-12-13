@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.ayalait.stock.modelo.*;
 
 
-public interface PlazosJpaSpring extends JpaRepository<Plazos, Integer>{
+public interface PlazosJpaSpring extends JpaRepository<Plazos, String>{
 	
 
 }

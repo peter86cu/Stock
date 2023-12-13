@@ -8,7 +8,7 @@ import com.ayalait.stock.modelo.*;
 
 
 
-public interface FormasPagoJpaSpring extends JpaRepository<FormasPago, Integer>{
+public interface FormasPagoJpaSpring extends JpaRepository<FormasPago, String>{
 	
 
 }
