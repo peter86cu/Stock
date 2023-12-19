@@ -15,6 +15,7 @@ import com.ayalait.stock.modelo.*;
 
 import com.ayalait.stock.dao.*;
 import com.ayalait.stock.vo.*;
+import com.ayalait.utils.ErrorAPI;
 
 @Service
 public class StockServiceImpl implements StockService {
@@ -110,7 +111,10 @@ public class StockServiceImpl implements StockService {
 			if(!lstImagen.isEmpty()) {
 				return new ResponseEntity<String>(new Gson().toJson(lstImagen), HttpStatus.OK);
 			}else {
-				return new ResponseEntity<String>("No existen imagenes para ese id de productos en la base.", HttpStatus.BAD_REQUEST);
+				ErrorAPI err= new ErrorAPI();
+				err.setCode(40002);
+				err.setMessage("No existen imagenes para ese id de productos en la base.");
+				return new ResponseEntity<String>(new Gson().toJson(err), HttpStatus.BAD_REQUEST);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getCause().getMessage(), HttpStatus.NOT_ACCEPTABLE);
@@ -124,7 +128,11 @@ public class StockServiceImpl implements StockService {
 			if(lstDetail!=null) {
 				return new ResponseEntity<String>(new Gson().toJson(lstDetail), HttpStatus.OK);
 			}else {
-				return new ResponseEntity<String>("No existen detalle para ese id de productos en la base.", HttpStatus.BAD_REQUEST);
+				ErrorAPI err= new ErrorAPI();
+				err.setCode(40003);
+				err.setMessage("No existen detalle para ese id de productos en la base.");
+				
+				return new ResponseEntity<String>(new Gson().toJson(err), HttpStatus.BAD_REQUEST);
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getCause().getMessage(), HttpStatus.NOT_ACCEPTABLE);

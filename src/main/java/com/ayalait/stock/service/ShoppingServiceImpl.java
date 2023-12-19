@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpServerErrorException;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -17,6 +18,7 @@ import com.ayalait.stock.modelo.*;
 
 import com.ayalait.stock.dao.*;
 import com.ayalait.stock.vo.*;
+import com.ayalait.utils.ErrorAPI;
 
 @Service
 public class ShoppingServiceImpl implements ShoppingService {
@@ -82,7 +84,10 @@ public class ShoppingServiceImpl implements ShoppingService {
 				}
 				return new ResponseEntity<String>(new Gson().toJson(response), HttpStatus.OK);
 			} else {
-				return new ResponseEntity<String>("Error obteniendo el carrito de compra.", HttpStatus.BAD_REQUEST);
+				ErrorAPI err= new ErrorAPI();
+				err.setCode(40001);
+				err.setMessage("Error obteniendo el carriro");
+				return new ResponseEntity<String>(new Gson().toJson(err), HttpStatus.BAD_REQUEST);
 			}
 
 		} catch (Exception e) {
