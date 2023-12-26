@@ -19,6 +19,7 @@ import com.ayalait.stock.modelo.*;
 import com.ayalait.stock.dao.*;
 import com.ayalait.stock.vo.*;
 import com.ayalait.utils.ErrorAPI;
+import com.ayalait.utils.ErrorState;
 
 @Service
 public class ShoppingServiceImpl implements ShoppingService {
@@ -220,13 +221,14 @@ public class ShoppingServiceImpl implements ShoppingService {
 	@Override
 	public ResponseEntity<String> listadoOrdenesPorUsuario(String id) {
 		try {
-
+			ErrorState error= new ErrorState();
 			List<OrdenPago> response = daoSHopping.listadoOrdenesPorUsuario(id);
 			if (!response.isEmpty()) {
 				
 				return new ResponseEntity<String>(new Gson().toJson(response), HttpStatus.OK);
 			} else {
-				return new ResponseEntity<String>("Usted no tiene compras.",
+				error.setCode(10001);
+				return new ResponseEntity<String>(new Gson().toJson(error),
 						HttpStatus.BAD_REQUEST);
 			}
 
