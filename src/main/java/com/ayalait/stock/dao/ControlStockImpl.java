@@ -31,7 +31,6 @@ public class ControlStockImpl implements ControlStockDao {
 	@Override
 	public void eliminarProducto(String id) {
 		daoProducto.deleteById(id);
-		
 	}
 
 	@Override

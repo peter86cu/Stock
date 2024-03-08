@@ -48,8 +48,11 @@ public class StockServiceImpl implements StockService {
 				}
 				if(request.getProducto()!=null) {
 					ProductoDetalles detalle=request.getDetalle();
-					detalle.setIdproducto(request.getProducto().getId());
-					daoStock.guardarProductoDetalle(detalle);
+					if(detalle.getIdproducto()!=null) {
+						detalle.setIdproducto(request.getProducto().getId());
+						daoStock.guardarProductoDetalle(detalle);
+					}
+					
 					
 				}
 				

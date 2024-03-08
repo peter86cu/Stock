@@ -218,4 +218,21 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 		}
 	}
 
+	@Override
+	public ResponseEntity<String> obtenerClientePorId(int id) {
+		try {
+			Cliente cliente = service.obtenerClientePorId(id);
+			if (cliente != null) {
+				return new ResponseEntity<String>(new Gson().toJson(cliente), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<String>("No existen el cliente con id:" + id + " en la base de datos.",
+						HttpStatus.BAD_REQUEST);
+			}
+			
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getCause().getMessage(),
+					HttpStatus.NOT_ACCEPTABLE);
+		}
+	}
+
 }

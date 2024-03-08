@@ -20,7 +20,9 @@ public interface ParametrosProductoService {
 
 	ResponseEntity<String> obtenerDepositos();
 
-	ResponseEntity<String> obtenerClientePorCI(String ci);	
+	ResponseEntity<String> obtenerClientePorCI(String ci);
+	
+	ResponseEntity<String> obtenerClientePorId(int id);
 	
 	ResponseEntity<String> buscarProveedorPorID(int id);
 	

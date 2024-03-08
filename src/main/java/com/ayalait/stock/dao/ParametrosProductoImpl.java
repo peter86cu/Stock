@@ -129,4 +129,9 @@ public class ParametrosProductoImpl implements ParametrosProductoDao {
 		return daoModelo.findAll().stream().filter(e -> e.getEstado()==1).toList();
 	}
 
+	@Override
+	public Cliente obtenerClientePorId(int id) {		
+		return daoCliente.findById(id).orElse(null);
+	}
+
 }
