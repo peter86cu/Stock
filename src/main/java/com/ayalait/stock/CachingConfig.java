@@ -10,12 +10,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CachingConfig {
  
-    @Bean
+    /*@Bean
     public CacheManager cacheManager() {
         return new ConcurrentMapCacheManager("tipoProducto","categorias","um","impuesto",
         		"monedas","formasPagos","plazos","defecto","depositos","turnos","tipoCuadre","cajas","tipoArqueo","billetes",
         		"configuraciones","formaCobro","cliente","estadosUsuarios","marcas","modelos");
-    }
+    }*/
     
     
 }

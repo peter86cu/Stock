@@ -36,7 +36,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 		}
 	}
 
-	@Cacheable(cacheNames = "um")
+	//@Cacheable(cacheNames = "um")
 	@Override
 	public ResponseEntity<String> obtenerUM() {
 
@@ -53,7 +53,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 			return new ResponseEntity<String>(e.getCause().getMessage(), HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
-	@Cacheable(cacheNames="impuesto")
+	//@Cacheable(cacheNames="impuesto")
 	@Override
 	public ResponseEntity<String> obtenerImpuesto() {
 		try {
@@ -70,7 +70,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 		}
 	}
 
-	@Cacheable(cacheNames="monedas")
+	//@Cacheable(cacheNames="monedas")
 	@Override
 	public ResponseEntity<String> obtenerMoneda() {
 		try {
@@ -87,7 +87,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 	}
 
 	
-	@Cacheable(cacheNames="plazos")
+	//@Cacheable(cacheNames="plazos")
 	@Override
 	public ResponseEntity<String> obtenerPlazos() {
 		try {
@@ -105,7 +105,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 					HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
-	@Cacheable(cacheNames="depositos")
+	//@Cacheable(cacheNames="depositos")
 	@Override
 	public ResponseEntity<String> obtenerDepositos() {
 		try {
@@ -171,7 +171,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 		}
 		
 	}
-	@Cacheable(cacheNames="defecto")
+	//@Cacheable(cacheNames="defecto")
 	@Override
 	public ResponseEntity<String> valorDefectoMoneda() {
 		try {
@@ -187,7 +187,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 		}
 	}
 	
-	@Cacheable(cacheNames="marcas")
+	//@Cacheable(cacheNames="marcas")
 	@Override
 	public ResponseEntity<String> marcasProducto() {
 		try {
@@ -202,7 +202,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 			return new ResponseEntity<String>(e.getCause().getMessage(), HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
-	@Cacheable(cacheNames="modelos")
+	//@Cacheable(cacheNames="modelos")
 	@Override
 	public ResponseEntity<String> modelosProducto() {
 		try {
