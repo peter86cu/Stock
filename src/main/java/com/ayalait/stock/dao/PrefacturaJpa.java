@@ -15,11 +15,11 @@ public interface PrefacturaJpa extends JpaRepository<Prefactura, Integer>{
     @Query(value="SELECT id_prefactura from prefacturas  WHERE id_usuario =:id AND fecha_hora=:fecha", nativeQuery=true)
     int numeroPrefacturaADD(@Param("id") String id, @Param("fecha") String fecha);
     
-    @Query(value="SELECT oc.id_prefactura, DATE_FORMAT(oc.fecha_hora, '%d-%m-%Y')   as fecha, p.descripcion as plazo,f.descripcion as forma_pago, (select COUNT(*) \r\n"
-			+ "from prefactura_detalle where id_prefactura=oc.id_prefactura) as items, e.descripcion as estado, e.id_orden_compra_estado as id_estado, \r\n"
-			+ "CONCAT(emp.nombre,' ',emp.apellidos) nombre, cli.nombres as cliente, cli.id_cliente    \r\n"
-			+ "FROM plazos p, formas_pagos f, ordenes_de_compras_estados e,usuarios u,empleado emp,prefacturas oc\r\n"
-			+ "left join clientes cli on oc.id_cliente=cli.id_cliente WHERE oc.id_plazo=p.id_plazo and oc.id_forma_pago = f.id_forma_pago \r\n"
-			+ "and e.id_orden_compra_estado = oc.estado and u.idusuario=oc.id_usuario and oc.fecha_baja is NULL AND emp.idempleado=u.idempleado order by id_prefactura desc", nativeQuery=true)
+    @Query(value="SELECT oc.id_prefactura, DATE_FORMAT(oc.fecha_hora, '%d-%m-%Y')   as fecha, p.descripcion as plazo,m.moneda as moneda, (select COUNT(*) \r\n"
+    		+ "		from prefactura_detalle where id_prefactura=oc.id_prefactura) as items, e.descripcion as estado, e.id_orden_compra_estado as id_estado, \r\n"
+    		+ "		CONCAT(emp.nombre,' ',emp.apellidos) nombre, cli.nombres as cliente, cli.id_cliente    \r\n"
+    		+ "		FROM plazos p, moneda m, ordenes_de_compras_estados e,usuarios u,empleado emp,prefacturas oc\r\n"
+    		+ "		left join clientes cli on oc.id_cliente=cli.id_cliente WHERE oc.id_plazo=p.id_plazo and oc.id_moneda = m.id \r\n"
+    		+ "	and e.id_orden_compra_estado = oc.estado and u.idusuario=oc.id_usuario and oc.fecha_baja is NULL AND emp.idempleado=u.idempleado order by id_prefactura desc", nativeQuery=true)
     List<Object> findPrefactura();
 }

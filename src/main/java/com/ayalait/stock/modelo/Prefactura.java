@@ -17,7 +17,7 @@ public class Prefactura implements Serializable {
 	private int estado;
 	private String id_usuario;
 	private int id_plazo;
-	private int id_forma_pago;
+	private int id_moneda;
 	private int id_cliente;
 	private String fecha_baja;
 	private int id_cotizacion_producto;
@@ -52,12 +52,7 @@ public class Prefactura implements Serializable {
 	public void setId_plazo(int id_plazo) {
 		this.id_plazo = id_plazo;
 	}
-	public int getId_forma_pago() {
-		return id_forma_pago;
-	}
-	public void setId_forma_pago(int id_forma_pago) {
-		this.id_forma_pago = id_forma_pago;
-	}
+	
 	public int getId_cliente() {
 		return id_cliente;
 	}
@@ -85,6 +80,12 @@ public class Prefactura implements Serializable {
 	public Prefactura() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public int getId_moneda() {
+		return id_moneda;
+	}
+	public void setId_moneda(int id_moneda) {
+		this.id_moneda = id_moneda;
 	}
 
 }

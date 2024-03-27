@@ -35,7 +35,7 @@ public class StockServiceImpl implements StockService {
 		try {
 			RequestAddProducto request = new Gson().fromJson(producto, RequestAddProducto.class);
 			if (request.getAccion().equalsIgnoreCase("Add")) {
-				request.getProducto().setMoneda(1);
+				//request.getProducto().setMoneda(1);
 
 				daoStock.guardarProducto(request.getProducto());
 				

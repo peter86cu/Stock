@@ -121,7 +121,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 					   response.setId_prefactura(objArray[0].toString());
 					   response.setFecha(objArray[1].toString());					  
 					   response.setPlazo(objArray[2].toString());
-					   response.setForma_pago(objArray[3].toString());
+					   response.setId_moneda(objArray[3].toString());
 					   response.setItems(objArray[4].toString());
 					   response.setEstado(objArray[5].toString());
 					   response.setId_estado(objArray[6].toString());
