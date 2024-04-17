@@ -203,6 +203,243 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 		}
 	}
 
+	@Override
+	public ResponseEntity<String> obtenerClientePorID(int idCliente) {
+		try {
+			Cliente response= daoPrefactura.obtenerClientePorID(idCliente);
+			if(response!=null) {
+				return new ResponseEntity<String>(new Gson().toJson(response),HttpStatus.OK);
+
+			}else {
+				error.setCode(90004);
+				error.setMenssage("No se encontraro al cliente con id: "+ idCliente);
+				return new ResponseEntity<String>(new Gson().toJson(error),HttpStatus.BAD_GATEWAY);
+
+			}
+			
+		} catch (Exception e) {
+			error.setCode(90020);
+			error.setMenssage(e.getCause().getMessage());
+			return new ResponseEntity<String>(new Gson().toJson(error),HttpStatus.NOT_ACCEPTABLE);
+		}
+	}
+
+	@Override
+	public String confirmarPedido(int idPedido) {
+		try {
+			int response= daoPrefactura.confirmarPedido(idPedido);
+			if(response>0) {
+				return "<html lang=\"en\">\r\n"
+						+ "<head>\r\n"
+						+ "    <meta charset=\"UTF-8\">\r\n"
+						+ "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
+						+ "    <title>Confirmación Exitosa</title>\r\n"
+						+ "    <style>\r\n"
+						+ "        body {\r\n"
+						+ "            font-family: Arial, sans-serif;\r\n"
+						+ "            margin: 20px;\r\n"
+						+ "            text-align: center;\r\n"
+						+ "            background-color: #f3f3f3;\r\n"
+						+ "        }\r\n"
+						+ "        .container {\r\n"
+						+ "            max-width: 600px;\r\n"
+						+ "            margin: 0 auto;\r\n"
+						+ "            padding: 20px;\r\n"
+						+ "            border-radius: 5px;\r\n"
+						+ "            background-color: #ffffff;\r\n"
+						+ "            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\r\n"
+						+ "        }\r\n"
+						+ "        .icon {\r\n"
+						+ "            font-size: 60px;\r\n"
+						+ "            color: #28a745;\r\n"
+						+ "        }\r\n"
+						+ "        h2 {\r\n"
+						+ "            color: #28a745;\r\n"
+						+ "            margin-bottom: 10px;\r\n"
+						+ "        }\r\n"
+						+ "        p {\r\n"
+						+ "            margin-bottom: 20px;\r\n"
+						+ "        }\r\n"
+						+ "        .btn {\r\n"
+						+ "            display: inline-block;\r\n"
+						+ "            font-weight: 400;\r\n"
+						+ "            color: #ffffff;\r\n"
+						+ "            text-align: center;\r\n"
+						+ "            vertical-align: middle;\r\n"
+						+ "            user-select: none;\r\n"
+						+ "            background-color: #007bff;\r\n"
+						+ "            border: 1px solid transparent;\r\n"
+						+ "            padding: 10px 20px;\r\n"
+						+ "            font-size: 1rem;\r\n"
+						+ "            line-height: 1.5;\r\n"
+						+ "            border-radius: 5px;\r\n"
+						+ "            text-decoration: none;\r\n"
+						+ "        }\r\n"
+						+ "        .btn:hover {\r\n"
+						+ "            background-color: #0056b3;\r\n"
+						+ "            color: #ffffff;\r\n"
+						+ "        }\r\n"
+						+ "    </style>\r\n"
+						+ "</head>\r\n"
+						+ "<body>\r\n"
+						+ "    <div class=\"container\">\r\n"
+						+ "        <span class=\"icon\">&#10003;</span>\r\n"
+						+ "        <h2>Confirmación Exitosa</h2>\r\n"
+						+ "        <p>Su pedido ha sido confirmado con éxito. ¡Gracias por su pedido!</p>\r\n"
+						+ "        <p>Detalles del pedido:</p>\r\n"
+						+ "        <ul>\r\n"
+						+ "            <li><strong>Número de Pedido:</strong> 123456789</li>\r\n"
+						+ "            <li><strong>Fecha:</strong> 15 de Abril, 2024</li>\r\n"
+						+ "            <li><strong>Total:</strong> $500.00 USD</li>\r\n"
+						+ "        </ul>\r\n"
+						+ "        <p><a class=\"btn\" href=\"https://ayalait.com.uy\" target=\"_blank\">Volver al Sitio Web</a></p>\r\n"
+						+ "    </div>\r\n"
+						+ "</body>\r\n"
+						+ "</html>\r\n"
+						+ "";
+
+			}else {
+				error.setCode(90004);
+				error.setMenssage("Ocurrio un error actualizando su pedido.");
+				return "<!DOCTYPE html>\r\n"
+						+ "<html lang=\"en\">\r\n"
+						+ "<head>\r\n"
+						+ "    <meta charset=\"UTF-8\">\r\n"
+						+ "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
+						+ "    <title>No Confirmación de Pedido</title>\r\n"
+						+ "    <style>\r\n"
+						+ "        body {\r\n"
+						+ "            font-family: Arial, sans-serif;\r\n"
+						+ "            margin: 20px;\r\n"
+						+ "            text-align: center;\r\n"
+						+ "            background-color: #f3f3f3;\r\n"
+						+ "        }\r\n"
+						+ "        .container {\r\n"
+						+ "            max-width: 600px;\r\n"
+						+ "            margin: 0 auto;\r\n"
+						+ "            padding: 20px;\r\n"
+						+ "            border-radius: 5px;\r\n"
+						+ "            background-color: #ffffff;\r\n"
+						+ "            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\r\n"
+						+ "        }\r\n"
+						+ "        .icon {\r\n"
+						+ "            font-size: 60px;\r\n"
+						+ "            color: #dc3545;\r\n"
+						+ "        }\r\n"
+						+ "        h2 {\r\n"
+						+ "            color: #dc3545;\r\n"
+						+ "            margin-bottom: 10px;\r\n"
+						+ "        }\r\n"
+						+ "        p {\r\n"
+						+ "            margin-bottom: 20px;\r\n"
+						+ "        }\r\n"
+						+ "        .btn {\r\n"
+						+ "            display: inline-block;\r\n"
+						+ "            font-weight: 400;\r\n"
+						+ "            color: #ffffff;\r\n"
+						+ "            text-align: center;\r\n"
+						+ "            vertical-align: middle;\r\n"
+						+ "            user-select: none;\r\n"
+						+ "            background-color: #007bff;\r\n"
+						+ "            border: 1px solid transparent;\r\n"
+						+ "            padding: 10px 20px;\r\n"
+						+ "            font-size: 1rem;\r\n"
+						+ "            line-height: 1.5;\r\n"
+						+ "            border-radius: 5px;\r\n"
+						+ "            text-decoration: none;\r\n"
+						+ "        }\r\n"
+						+ "        .btn:hover {\r\n"
+						+ "            background-color: #0056b3;\r\n"
+						+ "            color: #ffffff;\r\n"
+						+ "        }\r\n"
+						+ "    </style>\r\n"
+						+ "</head>\r\n"
+						+ "<body>\r\n"
+						+ "    <div class=\"container\">\r\n"
+						+ "        <span class=\"icon\">&#10060;</span>\r\n"
+						+ "        <h2>No se pudo Confirmar el Pedido</h2>\r\n"
+						+ "        <p>Lamentablemente, no se ha podido confirmar su pedido en este momento.</p>\r\n"
+						+ "        <p>Si tiene alguna pregunta o necesita asistencia, por favor contáctenos.</p>\r\n"
+						+ "        <p>Gracias por su comprensión.</p>\r\n"
+						+ "        <p><a class=\"btn\" href=\"https://www.tu-sitio-web.com/contacto\" target=\"_blank\">Contactar Soporte</a></p>\r\n"
+						+ "    </div>\r\n"
+						+ "</body>\r\n"
+						+ "</html>\r\n"
+						+ "";
+
+			}
+			
+		} catch (Exception e) {
+			error.setCode(90020);
+			error.setMenssage(e.getCause().getMessage());
+			return "<!DOCTYPE html>\r\n"
+					+ "<html lang=\"en\">\r\n"
+					+ "<head>\r\n"
+					+ "    <meta charset=\"UTF-8\">\r\n"
+					+ "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n"
+					+ "    <title>No Confirmación de Pedido</title>\r\n"
+					+ "    <style>\r\n"
+					+ "        body {\r\n"
+					+ "            font-family: Arial, sans-serif;\r\n"
+					+ "            margin: 20px;\r\n"
+					+ "            text-align: center;\r\n"
+					+ "            background-color: #f3f3f3;\r\n"
+					+ "        }\r\n"
+					+ "        .container {\r\n"
+					+ "            max-width: 600px;\r\n"
+					+ "            margin: 0 auto;\r\n"
+					+ "            padding: 20px;\r\n"
+					+ "            border-radius: 5px;\r\n"
+					+ "            background-color: #ffffff;\r\n"
+					+ "            box-shadow: 0 2px 4px rgba(0,0,0,0.1);\r\n"
+					+ "        }\r\n"
+					+ "        .icon {\r\n"
+					+ "            font-size: 60px;\r\n"
+					+ "            color: #dc3545;\r\n"
+					+ "        }\r\n"
+					+ "        h2 {\r\n"
+					+ "            color: #dc3545;\r\n"
+					+ "            margin-bottom: 10px;\r\n"
+					+ "        }\r\n"
+					+ "        p {\r\n"
+					+ "            margin-bottom: 20px;\r\n"
+					+ "        }\r\n"
+					+ "        .btn {\r\n"
+					+ "            display: inline-block;\r\n"
+					+ "            font-weight: 400;\r\n"
+					+ "            color: #ffffff;\r\n"
+					+ "            text-align: center;\r\n"
+					+ "            vertical-align: middle;\r\n"
+					+ "            user-select: none;\r\n"
+					+ "            background-color: #007bff;\r\n"
+					+ "            border: 1px solid transparent;\r\n"
+					+ "            padding: 10px 20px;\r\n"
+					+ "            font-size: 1rem;\r\n"
+					+ "            line-height: 1.5;\r\n"
+					+ "            border-radius: 5px;\r\n"
+					+ "            text-decoration: none;\r\n"
+					+ "        }\r\n"
+					+ "        .btn:hover {\r\n"
+					+ "            background-color: #0056b3;\r\n"
+					+ "            color: #ffffff;\r\n"
+					+ "        }\r\n"
+					+ "    </style>\r\n"
+					+ "</head>\r\n"
+					+ "<body>\r\n"
+					+ "    <div class=\"container\">\r\n"
+					+ "        <span class=\"icon\">&#10060;</span>\r\n"
+					+ "        <h2>No se pudo Confirmar el Pedido</h2>\r\n"
+					+ "        <p>Lamentablemente, no se ha podido confirmar su pedido en este momento.</p>\r\n"
+					+ "        <p>Si tiene alguna pregunta o necesita asistencia, por favor contáctenos.</p>\r\n"
+					+ "        <p>Gracias por su comprensión.</p>\r\n"
+					+ "        <p><a class=\"btn\" href=\"https://www.tu-sitio-web.com/contacto\" target=\"_blank\">Contactar Soporte</a></p>\r\n"
+					+ "    </div>\r\n"
+					+ "</body>\r\n"
+					+ "</html>\r\n"
+					+ "";
+		}
+	}
+
 	
 
 }

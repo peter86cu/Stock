@@ -13,4 +13,7 @@ public interface ClienteJpaSpring extends JpaRepository<Cliente, Integer>{
 	
 	@Query(value="select * from clientes where nro_documento=:ci and fecha_baja is null", nativeQuery=true)
 	Cliente buscarClientePorCI(@Param("ci") String ci);
+	
+	@Query(value="select * from clientes where id_cliente=:id and fecha_baja is null", nativeQuery=true)
+	Cliente buscarClientePorID(@Param("id") int id);
 }

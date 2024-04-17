@@ -25,8 +25,9 @@ public interface PrefacturaDao {
 	List<Object> listadoPrefactura();
 	void guardarModificacionPrefactura(PrefacturaModificaciones prefactura);
 	List<Object> listadoPrefacturasAprobadas();
-	
+	Cliente obtenerClientePorID(int id);
 	PrefacturaModificaciones obtenerModificacionPrefacturaId(int idPrefactura);
+	int confirmarPedido(int id);
 	
 
 }

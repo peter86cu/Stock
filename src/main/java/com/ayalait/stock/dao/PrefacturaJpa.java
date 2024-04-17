@@ -2,8 +2,10 @@ package com.ayalait.stock.dao;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import javax.transaction.Transactional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -22,4 +24,9 @@ public interface PrefacturaJpa extends JpaRepository<Prefactura, Integer>{
     		+ "		left join clientes cli on oc.id_cliente=cli.id_cliente WHERE oc.id_plazo=p.id_plazo and oc.id_moneda = m.id \r\n"
     		+ "	and e.id_orden_compra_estado = oc.estado and u.idusuario=oc.id_usuario and oc.fecha_baja is NULL AND emp.idempleado=u.idempleado order by id_prefactura desc", nativeQuery=true)
     List<Object> findPrefactura();
+    
+    @Transactional
+    @Modifying
+    @Query(value="UPDATE prefacturas SET estado = 6 WHERE id_prefactura =:id", nativeQuery=true)
+    int confirmarPedido(@Param("id") int id);
 }

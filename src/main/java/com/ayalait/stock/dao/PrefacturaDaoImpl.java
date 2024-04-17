@@ -25,6 +25,9 @@ public class PrefacturaDaoImpl implements PrefacturaDao {
 	@Autowired
 	PrefacturaModificacionesJpa daoModif;
 	
+	@Autowired
+	ClienteJpaSpring daoCliente;
+	
 	@Override
 	public void crearPrefactura(Prefactura orden) {
 		daoPrefactura.save(orden);
@@ -77,6 +80,18 @@ public class PrefacturaDaoImpl implements PrefacturaDao {
 	@Override
 	public PrefacturaModificaciones obtenerModificacionPrefacturaId(int idPrefactura) {
 		return daoModif.findById_usuario_cancela(idPrefactura);
+	}
+
+	@Override
+	public Cliente obtenerClientePorID(int id) {
+		
+		return daoCliente.buscarClientePorID(id);
+	}
+
+	@Override
+	public int confirmarPedido(int id) {
+		return daoPrefactura.confirmarPedido(id);
+		
 	}
 
 	

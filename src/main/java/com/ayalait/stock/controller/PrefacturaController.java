@@ -87,5 +87,15 @@ public class PrefacturaController {
 		return service.obtenerModificacionPrefacturaId(id);
 	}
 	
+	@PostMapping(value="prefactura/cliente",produces=MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<String> obtenerCliente(@RequestParam("id") int id) {		
+		return service.obtenerClientePorID(id);
+	}
 	
+	@GetMapping(value="prefactura/confirmar-pedido")
+	//@ResponseStatus(HttpStatus.CREATED)
+	public String confirmarPedido(@RequestParam("id") int id) {		
+		return service.confirmarPedido(id);
+	}
 }

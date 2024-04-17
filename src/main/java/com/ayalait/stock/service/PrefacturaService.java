@@ -24,4 +24,9 @@ public interface PrefacturaService {
 	
 	ResponseEntity<String> obtenerModificacionPrefacturaId(int idPrefactura);
 	
+	ResponseEntity<String> obtenerClientePorID(int idCliente);
+	
+	String confirmarPedido(int idPedido);
+
+	
 }
