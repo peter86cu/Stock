@@ -19,7 +19,6 @@ public class Prefactura implements Serializable {
 	private int id_plazo;
 	private int id_moneda;
 	private int id_cliente;
-	private int utilidad;
 	private String fecha_baja;
 	private int id_cotizacion_producto;
 	private String fecha_hora_creado;
@@ -88,11 +87,6 @@ public class Prefactura implements Serializable {
 	public void setId_moneda(int id_moneda) {
 		this.id_moneda = id_moneda;
 	}
-	public int getUtilidad() {
-		return utilidad;
-	}
-	public void setUtilidad(int utilidad) {
-		this.utilidad = utilidad;
-	}
+	
 
 }
