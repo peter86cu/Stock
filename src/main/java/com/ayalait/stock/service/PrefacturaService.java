@@ -10,7 +10,7 @@ public interface PrefacturaService {
 	
     ResponseEntity<String> obtenerNumeroPrefactura(String fecha, String idUsuario);	
 	
-    ResponseEntity<String> obtenerPrefacturaPorId(int id);
+    ResponseEntity<String> obtenerPrefacturaPorId(String id);
 	
 	ResponseEntity<String> guardarDetallePrefactura(String detalle);
 	

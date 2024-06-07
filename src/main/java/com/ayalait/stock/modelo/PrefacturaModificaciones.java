@@ -13,7 +13,7 @@ public class PrefacturaModificaciones implements Serializable {
 
 	@Id
 	private int id_prefactura_modif;	
-	private int id_prefactura;	
+	private String id_prefactura;	
 	private String id_usuario_autorizo;	
 	private String id_usuario_cancela;
 	private String id_usuario_envio;	
@@ -51,10 +51,10 @@ public class PrefacturaModificaciones implements Serializable {
 	public void setFecha_envio(String fecha_envio) {
 		this.fecha_envio = fecha_envio;
 	}
-	public int getId_prefactura() {
+	public String getId_prefactura() {
 		return id_prefactura;
 	}
-	public void setId_prefactura(int id_prefactura) {
+	public void setId_prefactura(String id_prefactura) {
 		this.id_prefactura = id_prefactura;
 	}
 	public PrefacturaModificaciones() {

@@ -2,6 +2,8 @@ package com.ayalait.stock.service;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -46,7 +48,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 	}
 
 	@Override
-	public ResponseEntity<String> obtenerPrefacturaPorId(int id) {
+	public ResponseEntity<String> obtenerPrefacturaPorId(String id) {
 		try {
 			Prefactura orden=daoPrefactura.obtenerPrefacturaPorId(id);
 			if(orden!=null) {
@@ -99,7 +101,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 	@Override
 	public ResponseEntity<String> obtenerNumeroPrefactura(String fecha, String idUsuario) {
 		try {
-			int resultado= daoPrefactura.obtenerNumeroPrefactura(fecha, idUsuario);
+			String resultado= daoPrefactura.obtenerNumeroPrefactura(fecha, idUsuario);
 			return new ResponseEntity<String>(String.valueOf(resultado),HttpStatus.OK);
 			
 		} catch (Exception e) {
@@ -127,9 +129,22 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 					   response.setId_estado(objArray[6].toString());
 					   response.setNombre(objArray[7].toString());
 					   response.setCliente(objArray[8].toString());
-					   response.setId_cliente(Integer.parseInt(objArray[9].toString()) );
+					   response.setId_cliente(objArray[9].toString());
+					   response.setCod_factura(objArray[10].toString());
 					   lstPrefact.add(response);
 				}
+				// Ordenar la lista por fecha usando un Comparator clásico
+		      /*  Collections.sort(lstPrefact, new Comparator<ResponsePrefactura>() {
+		            @Override
+		            public int compare(ResponsePrefactura r1, ResponsePrefactura r2) {
+		                return r1.getFecha().compareTo(r2.getFecha());
+		            }
+		        });*/
+		        
+		     // Ordenar la lista por fecha en orden descendente usando una expresión lambda
+				Collections.sort(lstPrefact, (r1, r2) -> r1.getFecha().compareTo(r2.getFecha()));
+
+		        
 				return new ResponseEntity<String>(new Gson().toJson(lstPrefact),HttpStatus.OK);
 			}else {
 				error.setCode(90002);
@@ -142,6 +157,9 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 			return new ResponseEntity<String>(new Gson().toJson(error),HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
+	
+	
+	
 
 	@Override
 	public ResponseEntity<String> salvarModificaciones(String datos) {
@@ -165,7 +183,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 				while( lst.hasNext()) {
 					Object[] objArray = (Object[]) lst.next();
 					 OCAprobadas items = new OCAprobadas();
-					   items.setId(Integer.parseInt(objArray[0].toString())) ;
+					   items.setId(objArray[0].toString()) ;
 					   items.setNombre(objArray[1].toString());
 					   lstPrefact.add(items);
 				}

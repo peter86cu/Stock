@@ -14,7 +14,7 @@ public class PrefacturaDetalle implements Serializable {
 	private int id_prefactura_detalle;
 	private String id_producto;
 	private int cantidad;
-	private int id_prefactura;
+	private String id_prefactura;
 	private double importe;
 	private int id_moneda;
 
@@ -42,11 +42,11 @@ public class PrefacturaDetalle implements Serializable {
 		this.id_prefactura_detalle = id_prefactura_detalle;
 	}
 
-	public int getId_prefactura() {
+	public String getId_prefactura() {
 		return id_prefactura;
 	}
 
-	public void setId_prefactura(int id_prefactura) {
+	public void setId_prefactura(String id_prefactura) {
 		this.id_prefactura = id_prefactura;
 	}
 

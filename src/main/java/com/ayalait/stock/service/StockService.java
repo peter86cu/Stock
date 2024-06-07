@@ -18,6 +18,8 @@ ResponseEntity<String> imagenesPorProducto(String id);
 
 ResponseEntity<String> detallesPorProductos(String id);
 
+ResponseEntity<String> obtenerProductoPorCodigo(String codigo);
+
 	
 	
 }

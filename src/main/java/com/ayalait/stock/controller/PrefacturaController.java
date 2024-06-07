@@ -34,7 +34,7 @@ public class PrefacturaController {
 	
 	@GetMapping(value="prefactura/id",produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<String> obtenerPrefacturaPorID(@RequestParam("id") int id) {
+	public ResponseEntity<String> obtenerPrefacturaPorID(@RequestParam("id") String id) {
 		
 		return service.obtenerPrefacturaPorId(id);
 		

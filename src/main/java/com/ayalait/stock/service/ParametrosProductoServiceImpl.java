@@ -219,7 +219,7 @@ public class ParametrosProductoServiceImpl implements ParametrosProductoService 
 	}
 
 	@Override
-	public ResponseEntity<String> obtenerClientePorId(int id) {
+	public ResponseEntity<String> obtenerClientePorId(String id) {
 		try {
 			Cliente cliente = service.obtenerClientePorId(id);
 			if (cliente != null) {

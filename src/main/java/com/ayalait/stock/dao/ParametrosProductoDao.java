@@ -42,7 +42,7 @@ public interface ParametrosProductoDao {
 	
 	//Clientes
 	Cliente obtenerClientePorCI(String ci);
-	Cliente obtenerClientePorId(int id);
+	Cliente obtenerClientePorId(String id);
 	
 	//Lista de monedas
 	List<Moneda> obtenerMonedas();

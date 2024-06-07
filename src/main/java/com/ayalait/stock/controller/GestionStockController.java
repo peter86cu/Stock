@@ -62,6 +62,15 @@ public class GestionStockController {
 		
 	}
 	
+	@GetMapping(value="productos/obtener-codigo",produces=MediaType.APPLICATION_JSON_VALUE)
+	@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseStatus(HttpStatus.CREATED)
+	public ResponseEntity<String> obtenerProductoPorCodigo(@RequestParam("codigo") String id) {
+		
+		 return service.obtenerProductoPorCodigo(id);
+		
+	}
+	
 	@GetMapping(value="productos/imagenes",produces=MediaType.APPLICATION_JSON_VALUE)
 	@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseStatus(HttpStatus.CREATED)

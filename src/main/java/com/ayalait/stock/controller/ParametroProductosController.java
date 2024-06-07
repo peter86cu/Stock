@@ -65,7 +65,7 @@ public class ParametroProductosController {
 	@GetMapping(value = "parametros/clientes/id", produces = MediaType.APPLICATION_JSON_VALUE)
 	@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<String> obtenerClientePorIDNew(@RequestParam("id") int id) throws Exception {
+	public ResponseEntity<String> obtenerClientePorIDNew(@RequestParam("id") String id) throws Exception {
 
 		return service.obtenerClientePorId(id);
 

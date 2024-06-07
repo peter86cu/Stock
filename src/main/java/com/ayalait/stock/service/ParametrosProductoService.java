@@ -22,7 +22,7 @@ public interface ParametrosProductoService {
 
 	ResponseEntity<String> obtenerClientePorCI(String ci);
 	
-	ResponseEntity<String> obtenerClientePorId(int id);
+	ResponseEntity<String> obtenerClientePorId(String id);
 	
 	ResponseEntity<String> buscarProveedorPorID(int id);
 	

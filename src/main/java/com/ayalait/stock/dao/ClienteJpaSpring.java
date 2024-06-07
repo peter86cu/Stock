@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.ayalait.stock.modelo.*;
 
-public interface ClienteJpaSpring extends JpaRepository<Cliente, Integer>{
+public interface ClienteJpaSpring extends JpaRepository<Cliente, String>{
 	
 	
 	@Query(value="select * from clientes where nro_documento=:ci and fecha_baja is null", nativeQuery=true)

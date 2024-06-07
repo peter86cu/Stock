@@ -142,4 +142,19 @@ public class StockServiceImpl implements StockService {
 		}
 	}
 
+	@Override
+	public ResponseEntity<String> obtenerProductoPorCodigo(String codigo) {
+		try {
+			Producto producto=daoStock.obtenerProductoPorCodigo(codigo);
+			if(producto!=null) {
+				return new ResponseEntity<String>(new Gson().toJson(producto), HttpStatus.OK);
+			}else {
+				return new ResponseEntity<String>("No existe el producto.", HttpStatus.BAD_REQUEST);
+			}
+			
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getCause().getMessage(), HttpStatus.NOT_ACCEPTABLE);
+		}
+	}
+
 }

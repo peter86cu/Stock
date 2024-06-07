@@ -130,7 +130,7 @@ public class ParametrosProductoImpl implements ParametrosProductoDao {
 	}
 
 	@Override
-	public Cliente obtenerClientePorId(int id) {		
+	public Cliente obtenerClientePorId(String id) {		
 		return daoCliente.findById(id).orElse(null);
 	}
 

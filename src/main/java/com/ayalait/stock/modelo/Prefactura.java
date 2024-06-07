@@ -12,20 +12,21 @@ public class Prefactura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id_prefactura;	
+	private String id_prefactura;	
 	private String fecha_hora;
+	private String cod_factura;
 	private int estado;
 	private String id_usuario;
 	private int id_plazo;
 	private int id_moneda;
-	private int id_cliente;
+	private String id_cliente;
 	private String fecha_baja;
 	private int id_cotizacion_producto;
 	private String fecha_hora_creado;
-	public int getId_prefactura() {
+	public String getId_prefactura() {
 		return id_prefactura;
 	}
-	public void setId_prefactura(int id_prefactura) {
+	public void setId_prefactura(String id_prefactura) {
 		this.id_prefactura = id_prefactura;
 	}
 	public String getFecha_hora() {
@@ -53,10 +54,10 @@ public class Prefactura implements Serializable {
 		this.id_plazo = id_plazo;
 	}
 	
-	public int getId_cliente() {
+	public String getId_cliente() {
 		return id_cliente;
 	}
-	public void setId_cliente(int id_cliente) {
+	public void setId_cliente(String id_cliente) {
 		this.id_cliente = id_cliente;
 	}
 	public String getFecha_baja() {
@@ -86,6 +87,12 @@ public class Prefactura implements Serializable {
 	}
 	public void setId_moneda(int id_moneda) {
 		this.id_moneda = id_moneda;
+	}
+	public String getCod_factura() {
+		return cod_factura;
+	}
+	public void setCod_factura(String cod_factura) {
+		this.cod_factura = cod_factura;
 	}
 	
 

@@ -15,7 +15,7 @@ public class Cliente implements Serializable {
 
 	@Id
 	@Column(name="id_cliente")
-	private int idCliente;
+	private String idCliente;
 
 	@Lob
 	private String direccion;
@@ -44,11 +44,11 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
-	public int getIdCliente() {
+	public String getIdCliente() {
 		return this.idCliente;
 	}
 
-	public void setIdCliente(int idCliente) {
+	public void setIdCliente(String idCliente) {
 		this.idCliente = idCliente;
 	}
 

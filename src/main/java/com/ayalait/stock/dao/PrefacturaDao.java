@@ -17,8 +17,8 @@ import com.ayalait.stock.modelo.*;
 public interface PrefacturaDao {
 	
 	void crearPrefactura(Prefactura orden);
-	int obtenerNumeroPrefactura(String fecha, String idUsuario);
-	Prefactura obtenerPrefacturaPorId(int id);
+	String obtenerNumeroPrefactura(String fecha, String idUsuario);
+	Prefactura obtenerPrefacturaPorId(String id);
 	void guardarDetallePrefactura(PrefacturaDetalle detalle);
 	PrefacturaDetalle recuperarDetallePrefacturaID(int id);
 	void eliminarDetallePrefcatura(int id);

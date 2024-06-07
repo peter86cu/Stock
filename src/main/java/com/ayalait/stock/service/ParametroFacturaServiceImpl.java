@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.google.gson.Gson;
 
 import com.ayalait.stock.modelo.*;
-
+import com.ayalait.stock.vo.RequestCrearOrdenCompra;
 import com.ayalait.stock.dao.*;
 
 @Service
@@ -19,6 +19,9 @@ public class ParametroFacturaServiceImpl implements ParametroFacturaService {
 	
 	@Autowired
 	ParametrosFacturaDao service;
+	
+	@Autowired
+	ClienteJpaSpring daoCliente;
 
 	@Override
 	public ResponseEntity<String> obtenerMonedas() {
@@ -49,6 +52,16 @@ public class ParametroFacturaServiceImpl implements ParametroFacturaService {
 		} catch (Exception e) {
 			return new ResponseEntity<String>(e.getCause().getCause().getMessage(),
 					HttpStatus.NOT_ACCEPTABLE);
+		}
+	}
+	@Override
+	public ResponseEntity<String> guardarCliente(String cliente) {
+		try {
+			Cliente request = new Gson().fromJson(cliente, Cliente.class);
+			daoCliente.save(request);
+			return new ResponseEntity<String>("Cliente guardado",HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<String>(e.getCause().getMessage(),HttpStatus.NOT_ACCEPTABLE);
 		}
 	}
 	

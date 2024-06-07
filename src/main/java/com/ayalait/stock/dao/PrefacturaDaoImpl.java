@@ -35,7 +35,7 @@ public class PrefacturaDaoImpl implements PrefacturaDao {
 	}
 
 	@Override
-	public Prefactura obtenerPrefacturaPorId(int id) {
+	public Prefactura obtenerPrefacturaPorId(String id) {
 		return daoPrefactura.findById(id).orElse(null);
 	}
 
@@ -57,7 +57,7 @@ public class PrefacturaDaoImpl implements PrefacturaDao {
 	}
 
 	@Override
-	public int obtenerNumeroPrefactura(String fecha, String idUsuario) {
+	public String obtenerNumeroPrefactura(String fecha, String idUsuario) {
 		return daoPrefactura.numeroPrefacturaADD(idUsuario,fecha);
 	}
 
