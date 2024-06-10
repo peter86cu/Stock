@@ -26,7 +26,7 @@ public interface PrefacturaService {
 	
 	ResponseEntity<String> obtenerClientePorID(int idCliente);
 	
-	String confirmarPedido(int idPedido);
+	String confirmarPedido(String idPedido);
 
 	
 }

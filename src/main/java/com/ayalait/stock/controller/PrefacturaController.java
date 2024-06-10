@@ -95,7 +95,7 @@ public class PrefacturaController {
 	
 	@GetMapping(value="prefactura/confirmar-pedido")
 	//@ResponseStatus(HttpStatus.CREATED)
-	public String confirmarPedido(@RequestParam("id") int id) {		
+	public String confirmarPedido(@RequestParam("id") String id) {		
 		return service.confirmarPedido(id);
 	}
 }

@@ -243,7 +243,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 	}
 
 	@Override
-	public String confirmarPedido(int idPedido) {
+	public String confirmarPedido(String idPedido) {
 		try {
 			int response= daoPrefactura.confirmarPedido(idPedido);
 			if(response>0) {
@@ -379,7 +379,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 						+ "        <p>Lamentablemente, no se ha podido confirmar su pedido en este momento.</p>\r\n"
 						+ "        <p>Si tiene alguna pregunta o necesita asistencia, por favor contáctenos.</p>\r\n"
 						+ "        <p>Gracias por su comprensión.</p>\r\n"
-						+ "        <p><a class=\"btn\" href=\"https://www.tu-sitio-web.com/contacto\" target=\"_blank\">Contactar Soporte</a></p>\r\n"
+						+ "        <p><a class=\"btn\" href=\"https://ayalait.com.uy/contactanos/\" target=\"_blank\">Contactar Soporte</a></p>\r\n"
 						+ "    </div>\r\n"
 						+ "</body>\r\n"
 						+ "</html>\r\n"
@@ -450,7 +450,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 					+ "        <p>Lamentablemente, no se ha podido confirmar su pedido en este momento.</p>\r\n"
 					+ "        <p>Si tiene alguna pregunta o necesita asistencia, por favor contáctenos.</p>\r\n"
 					+ "        <p>Gracias por su comprensión.</p>\r\n"
-					+ "        <p><a class=\"btn\" href=\"https://www.tu-sitio-web.com/contacto\" target=\"_blank\">Contactar Soporte</a></p>\r\n"
+					+ "        <p><a class=\"btn\" href=\"https://ayalait.com.uy/contactanos\" target=\"_blank\">Contactar Soporte</a></p>\r\n"
 					+ "    </div>\r\n"
 					+ "</body>\r\n"
 					+ "</html>\r\n"

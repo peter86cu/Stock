@@ -28,5 +28,5 @@ public interface PrefacturaJpa extends JpaRepository<Prefactura, String>{
     @Transactional
     @Modifying
     @Query(value="UPDATE prefacturas SET estado = 6 WHERE id_prefactura =:id", nativeQuery=true)
-    int confirmarPedido(@Param("id") int id);
+    int confirmarPedido(@Param("id") String id);
 }

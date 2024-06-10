@@ -89,7 +89,7 @@ public class PrefacturaDaoImpl implements PrefacturaDao {
 	}
 
 	@Override
-	public int confirmarPedido(int id) {
+	public int confirmarPedido(String id) {
 		return daoPrefactura.confirmarPedido(id);
 		
 	}
