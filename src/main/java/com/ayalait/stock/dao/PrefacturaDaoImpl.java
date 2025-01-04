@@ -83,7 +83,7 @@ public class PrefacturaDaoImpl implements PrefacturaDao {
 	}
 
 	@Override
-	public Cliente obtenerClientePorID(int id) {
+	public Cliente obtenerClientePorID(String id) {
 		
 		return daoCliente.buscarClientePorID(id);
 	}

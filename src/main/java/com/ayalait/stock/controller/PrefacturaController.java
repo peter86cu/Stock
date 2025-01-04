@@ -89,7 +89,7 @@ public class PrefacturaController {
 	
 	@PostMapping(value="prefactura/cliente",produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public ResponseEntity<String> obtenerCliente(@RequestParam("id") int id) {		
+	public ResponseEntity<String> obtenerCliente(@RequestParam("id") String id) {		
 		return service.obtenerClientePorID(id);
 	}
 	

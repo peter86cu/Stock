@@ -222,7 +222,7 @@ public class PrefacturaServiceImpl implements PrefacturaService {
 	}
 
 	@Override
-	public ResponseEntity<String> obtenerClientePorID(int idCliente) {
+	public ResponseEntity<String> obtenerClientePorID(String idCliente) {
 		try {
 			Cliente response= daoPrefactura.obtenerClientePorID(idCliente);
 			if(response!=null) {
